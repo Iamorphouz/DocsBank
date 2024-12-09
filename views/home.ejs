@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
+		<title>Docs Bank</title>
 		<script src="https://cdn.tailwindcss.com"></script>
 		<link
 			href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
@@ -15,7 +15,7 @@
 		/>
 	</head>
 	<body>
-		<main class="p-4 bg-gray-100 dark:bg-gray-800 h-screen w-screen">
+		<main class="p-4 bg-gray-100 dark:bg-gray-800 h-full w-full">
 			<button
 				id="popBtn"
 				onclick="showPopUp()"
@@ -86,6 +86,42 @@
 				<button class="relative bottom-44" onclick="hidePopUp()">
 					<i class="dark:text-white ri-close-line"></i>
 				</button>
+			</div>
+
+			<div class="files mt-3 grid grid-cols-4 gap-2">
+				<% files.forEach((file)=>{ %>
+
+				<div
+					class="p-2 cursor-pointer rounded-md bg-gray-300 flex max-w-lg"
+				>
+					<!-- <h1 class="truncate"><%= file.originalname %></h1> -->
+					<!-- <h1 class="truncate"><%= file.path %></h1> -->
+
+					<figure class="max-w-lg flex flex-col justify-between">
+						<img
+							class="h-auto max-w-full rounded-lg"
+							src="<%= file.path %>"
+							alt="image description"
+						/>
+						<div class="flex flex-row justify-between mt-2">
+							<div>
+								<div class="truncate">
+									<%= file.originalname %>
+								</div>
+							</div>
+							<div>
+								<a
+									href="/download/<%= file.path %>"
+									download="<%= file.originalname %>"
+									class="text-blue-600 hover:text-blue-800"
+								>
+									<i class="ri-download-line"></i>
+								</a>
+							</div>
+						</div>
+					</figure>
+				</div>
+				<% }) %>
 			</div>
 		</main>
 		<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>

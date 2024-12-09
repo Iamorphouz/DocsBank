@@ -18,6 +18,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 
+process.on('uncaughtException', (err) => {
+	console.log('Uncaught Exception');
+	console.log(err);
+});
+
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}`);
 });
